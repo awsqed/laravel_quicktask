@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('task', 'TaskController', [
+    'only' => [
+        'index',
+        'store',
+        'destroy',
+    ],
+]);
+
+Route::get('/lang/{locale?}', function($locale = 'en') {
+    App::setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+});
