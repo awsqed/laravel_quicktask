@@ -70,6 +70,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ route('home') }}">@lang('general.home')</a>
+                        <a href="{{ route('task.index') }}">@lang('tasks.task')</a>
                     @else
                         <a href="{{ route('login') }}">@lang('auth.login')</a>
                         <a href="{{ route('register') }}">@lang('auth.register')</a>
