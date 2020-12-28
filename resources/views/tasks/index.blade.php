@@ -3,6 +3,14 @@
 @section('content')
 <div class="container-fluid">
     <div class="col-xs-3">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+            @endforeach
+        @endif
+
         <div class="panel panel-default">
             <div class="panel-heading">@lang('tasks.new.task')</div>
 
@@ -11,7 +19,7 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="task-name">@lang('tasks.task')</label>
-                        <input id="task-name" type="text" name="name" placeholder="@lang('tasks.task.name')" class="form-control" required>
+                        <input id="task-name" type="text" name="name" placeholder="@lang('tasks.task.name')" class="form-control" maxlength="255" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary col-xs-12">@lang('tasks.add')</button>
