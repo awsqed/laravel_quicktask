@@ -28,6 +28,22 @@
         </div>
     </div>
 
-    <!-- TODO: Task List -->
+    @if (count($tasks) > 0)
+        <div class="col-xs-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">@lang('tasks.task.list')</div>
+
+                <ul class="list-group">
+                    @foreach ($tasks as $task)
+                        <li class="list-group-item">
+                            {{ $task->name }}
+
+                            <!-- TODO: Delete Button -->
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
 </div>
 @endsection
