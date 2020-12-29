@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
@@ -15,6 +15,15 @@ class TaskController extends Controller
     public function index()
     {
         return view('tasks.index');
+    }
+
+    public function store(TaskRequest $request)
+    {
+        $request->user()->tasks()->create([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('task.index');
     }
 
 }
