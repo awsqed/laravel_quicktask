@@ -7,5 +7,6 @@ return [
     'task.name' => 'Tên nhiệm vụ',
     'add' => 'Thêm',
     'task.list' => 'Danh Sách Nhiệm Vụ',
+    'delete' => 'Xoá',
 
 ];
