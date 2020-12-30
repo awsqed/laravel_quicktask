@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
 
@@ -26,6 +27,14 @@ class TaskController extends Controller
         $request->user()->tasks()->create([
             'name' => $request->name,
         ]);
+
+        return redirect()->route('task.index');
+    }
+
+    public function destroy(Request $request, Task $task)
+    {
+        $this->authorize('delete', $task);
+        $task->delete();
 
         return redirect()->route('task.index');
     }

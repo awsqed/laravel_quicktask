@@ -38,7 +38,16 @@
                         <li class="list-group-item">
                             {{ $task->name }}
 
-                            <!-- TODO: Delete Button -->
+                            <div class="pull-right">
+                                <form action="{{ route('task.destroy', ['task' => $task->id]) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <button type="submit" class="btn btn-danger">@lang('tasks.delete')</button>
+                                </form>
+                            </div>
+
+                            <div class="clearfix"></div>
                         </li>
                     @endforeach
                 </ul>
