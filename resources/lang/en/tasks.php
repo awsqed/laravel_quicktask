@@ -6,5 +6,6 @@ return [
     'task' => 'Task',
     'task.name' => 'Task name',
     'add' => 'Add',
+    'task.list' => 'Task List',
 
 ];

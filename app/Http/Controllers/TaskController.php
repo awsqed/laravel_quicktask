@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
@@ -12,9 +13,12 @@ class TaskController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('tasks.index');
+        $tasks = $request->user()->tasks()->oldest()->get();
+        return view('tasks.index', [
+            'tasks' => $tasks,
+        ]);
     }
 
     public function store(TaskRequest $request)
